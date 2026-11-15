@@ -1819,3 +1819,46 @@ button, input, select, textarea {
     height: 70px;
   }
 }
+/* HEADER LOGO */
+.brand-logo {
+  display: block;
+  width: 105px;
+  height: 54px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* LOADING SCREEN LOGO */
+.loader-logo {
+  display: block;
+  width: min(230px, 65vw);
+  height: 145px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 6px;
+  padding: 4px;
+}
+
+/* FOOTER LOGO */
+.brand-footer .brand-logo {
+  width: 145px;
+  height: 75px;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .brand-logo {
+    width: 88px;
+    height: 46px;
+  }
+
+  .brand-footer .brand-logo {
+    width: 125px;
+    height: 65px;
+  }
+
+  .loader-logo {
+    width: min(200px, 70vw);
+    height: 125px;
+  }
+}
