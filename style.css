@@ -1,18 +1,19 @@
 
 :root {
-  --ink: #1b2922;
-  --forest: #101b17;
-  --moss: #344b3c;
-  --sage: #c8d0bd;
-  --stone: #e8e5da;
-  --paper: #f5f3eb;
-  --gold: #c7a66b;
-  --muted: #7d887d;
-  --line: rgba(27,41,34,.16);
+  --ink: #073B3A;
+  --forest: #073B3A;
+  --moss: #087F75;
+  --sage: #C7E36B;
+  --stone: #E5EEE7;
+  --paper: #F5F3E9;
+  --gold: #E58B69;
+  --muted: #6D8580;
+  --line: rgba(7,59,58,.16);
   --sans: 'DM Sans', sans-serif;
   --display: 'Manrope', sans-serif;
   --serif: 'Playfair Display', Georgia, serif;
 }
+
 
 * {
   box-sizing: border-box;
