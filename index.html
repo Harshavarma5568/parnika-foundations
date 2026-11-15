@@ -1,102 +1,281 @@
+
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101b19">
-<meta name="description" content="Explore open plots, duplex homes and simplex homes with Parnika Foundations in Tadepalligudem, Andhra Pradesh.">
-<title>Parnika Foundations — Where Your Future Takes Shape</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101b17">
+<meta name="description" content="Discover open plots, duplex homes and simplex homes with Parnika Foundations in Tadepalligudem, Andhra Pradesh.">
+<title>Parnika Foundations — A place to become</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
 </head>
 <body>
-<div class="topline"><span class="pulse"></span> A considered address in Tadepalligudem <span class="topline-right">NEAR NIT ANDHRA PRADESH</span></div>
-<header class="header">
-  <a class="brand" href="#home"><span class="brand-icon">P<span>F</span></span><span class="brand-word">PARNIKA<small>FOUNDATIONS</small></span></a>
-  <button class="menu-btn" aria-label="Open navigation" aria-expanded="false"><i></i><i></i></button>
-  <nav class="nav"><a href="#story">Our story</a><a href="#properties">Properties</a><a href="#location">Location</a><a href="#gallery">Gallery</a><a class="nav-action" href="#contact">Enquire now <b>↗</b></a></nav>
+<div class="loader" id="loader">
+  <div class="loader-mark">P<span>F</span></div>
+  <div class="loader-line"><i></i></div>
+  <small>SETTING THE SCENE</small>
+</div>
+
+<div class="announcement">
+  <span class="live-dot"></span>
+  A NEW PERSPECTIVE ON PLACE
+  <span class="announcement-right">TADEPALLIGUDEM · ANDHRA PRADESH</span>
+</div>
+
+<header class="site-header">
+  <a class="brand" href="#home">
+    <span class="brand-symbol">P<span>F</span></span>
+    <span class="brand-name">PARNIKA<small>FOUNDATIONS</small></span>
+  </a>
+  <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span>
+  </button>
+  <nav class="navigation">
+    <a href="#vision">Vision</a>
+    <a href="#properties">Properties</a>
+    <a href="#location">Location</a>
+    <a href="#gallery">Gallery</a>
+    <a class="nav-cta" href="#contact">Begin a conversation <b>↗</b></a>
+  </nav>
 </header>
+
 <main>
 <section class="hero" id="home">
-  <div class="hero-bg"></div><div class="hero-overlay"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-glow"></div>
+
   <div class="hero-copy">
-    <p class="eyebrow light"><span></span> PARNIKA FOUNDATIONS · TADEPALLIGUDEM</p>
-    <h1>Live closer<br>to <em>opportunity.</em></h1>
-    <p class="hero-sub">A place to put down roots, make room for possibility, and shape the life you imagine.</p>
-    <div class="hero-ctas"><a class="btn btn-cream" href="#properties">Explore properties <b>↗</b></a><a class="inline-link" href="#location">Discover the location <span>→</span></a></div>
-  </div>
-  <div class="hero-seal"><span>BUILD A FUTURE</span><b>✳</b><span>MAKE IT YOURS</span></div>
-  <div class="hero-meta"><span>01 / A PLACE TO BELONG</span><span>TADEPALLIGUDEM, ANDHRA PRADESH</span></div>
-  <a class="scroll-cue" href="#story">SCROLL TO EXPLORE <span>↓</span></a>
-</section>
-<section class="story section" id="story">
-  <div class="section-no">01 — THE FOUNDATION</div>
-  <div class="story-heading"><p class="eyebrow">A BETTER WAY TO BEGIN</p><h2>Not just a piece<br>of land. <em>A starting point.</em></h2></div>
-  <div class="story-text"><p>At Parnika Foundations, we believe the right place can make all the difference. Explore thoughtfully presented property opportunities in and around Tadepalligudem.</p><a class="under-link" href="#contact">Let’s find your place <span>↗</span></a></div>
-</section>
-<section class="connectivity">
-  <div><strong>200<span>m</span></strong><small>From NIT Andhra Pradesh*</small></div>
-  <div><strong>400<span>m</span></strong><small>From NH16*</small></div>
-  <div><strong>01<span>km</span></strong><small>From Tadepalligudem town*</small></div>
-  <p>*Indicative distances provided by the project team. Confirm actual route measurements before publication.</p>
-</section>
-<section class="properties section" id="properties">
-  <div class="section-head"><div><p class="eyebrow">02 — FIND YOUR FIT</p><h2>Space for every<br><em>kind of tomorrow.</em></h2></div><p>Whether you are planning a home or looking for a place to invest, start with the kind of space that feels right.</p></div>
-  <div class="filterbar" role="group" aria-label="Filter properties">
-    <span>EXPLORE BY PROPERTY TYPE</span>
-    <div class="filters"><button class="filter active" data-filter="all">All properties</button><button class="filter" data-filter="plot">Open plots</button><button class="filter" data-filter="duplex">Duplex</button><button class="filter" data-filter="simplex">Simplex</button></div>
-  </div>
-  <div class="property-grid" id="property-grid">
-    <article class="property-card" data-type="plot">
-      <div class="property-art art-plot"><span class="art-index">01 / LAND</span><div class="plot-plan"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="art-caption">ROOM TO IMAGINE</span></div>
-      <div class="property-info"><div><small>OPEN PLOTS</small><h3>Make space<br>for your plans.</h3></div><button class="circle-btn details-btn" data-id="plot" aria-label="View open plots details">↗</button></div>
-      <p>Explore land opportunities and find a canvas for the home you have in mind.</p>
-    </article>
-    <article class="property-card" data-type="duplex">
-      <div class="property-art art-duplex"><span class="art-index">02 / TWO LEVELS</span><div class="house house-two"><span></span></div><span class="art-caption">LIFE, WITH MORE ROOM</span></div>
-      <div class="property-info"><div><small>DUPLEX HOMES</small><h3>More room<br>to grow together.</h3></div><button class="circle-btn details-btn" data-id="duplex" aria-label="View duplex details">↗</button></div>
-      <p>Discover multi-level home possibilities designed around everyday living.</p>
-    </article>
-    <article class="property-card" data-type="simplex">
-      <div class="property-art art-simplex"><span class="art-index">03 / ONE LEVEL</span><div class="house house-one"><span></span></div><span class="art-caption">EASY, EVERYDAY LIVING</span></div>
-      <div class="property-info"><div><small>SIMPLEX HOMES</small><h3>All you need.<br>On one level.</h3></div><button class="circle-btn details-btn" data-id="simplex" aria-label="View simplex details">↗</button></div>
-      <p>Explore practical single-level living options for a life that flows naturally.</p>
-    </article>
-  </div>
-  <p class="fineprint">Property dimensions, pricing, approvals and availability are shared on enquiry and must be confirmed by Parnika Foundations.</p>
-</section>
-<section class="statement">
-  <div class="statement-photo"></div><div class="statement-content"><p class="eyebrow light">A PLACE WITH POTENTIAL</p><h2>Your next chapter<br>deserves a <em>good address.</em></h2><p>Come see the neighbourhood, understand the possibilities, and make a decision with confidence.</p><a class="btn btn-outline" href="#contact">Plan a site visit <b>↗</b></a></div>
-</section>
-<section class="location section" id="location">
-  <div class="section-head"><div><p class="eyebrow">03 — WELL CONNECTED</p><h2>Close to what<br><em>moves you.</em></h2></div><p>A location becomes meaningful through the places that shape your everyday. Explore the project area and plan your visit.</p></div>
-  <div class="location-layout">
-    <div class="map-wrap"><iframe title="Parnika Foundations project area map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=RGHJ%2BPF4%2C%20Tadepalligudem%2C%20Andhra%20Pradesh&output=embed"></iframe><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=RGHJ%2BPF4%2C+Tadepalligudem%2C+Andhra+Pradesh">Open in Google Maps ↗</a></div>
-    <div class="location-copy"><small class="label">PROJECT LOCATION</small><h3>Tadepalligudem,<br>Andhra Pradesh.</h3><p>Use the map to navigate to the project area. Please call ahead to coordinate your site visit and confirm the exact meeting point.</p>
-      <div class="nearby"><div><b>01</b><span>NIT Andhra Pradesh<small>Approx. 200 metres*</small></span></div><div><b>02</b><span>NH16<small>Approx. 400 metres*</small></span></div><div><b>03</b><span>Tadepalligudem town<small>Approx. 1 kilometre*</small></span></div></div>
-      <a class="under-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=RGHJ%2BPF4%2C+Tadepalligudem%2C+Andhra+Pradesh">Get directions <span>↗</span></a>
+    <p class="eyebrow"><span></span> PARNIKA FOUNDATIONS <i>·</i> TADEPALLIGUDEM</p>
+    <h1>A place to<br><em>become.</em></h1>
+    <p class="hero-intro">More than an address. A canvas for the life you're building, and the possibilities still ahead.</p>
+    <div class="hero-actions">
+      <a class="button button-light" href="#properties">Discover the possibilities <b>↗</b></a>
+      <a class="text-link" href="#vision">Our point of view <span>↓</span></a>
     </div>
   </div>
-  <p class="fineprint">*Connectivity distances are indicative and supplied by the project team. Verify exact site pin and road distances before relying on them.</p>
+
+  <div class="scene-wrap">
+    <canvas id="architecture-scene" aria-label="Interactive 3D architectural scene"></canvas>
+    <div class="scene-label scene-label-top"><span>01 / 03</span><i></i> ARCHITECTURE IN MOTION</div>
+    <div class="scene-label scene-label-bottom">DRAG TO EXPLORE <span>↗</span></div>
+    <div class="scene-caption">
+      <small>THE ART OF ARRIVING</small>
+      <strong>Imagine what<br>could take shape.</strong>
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <span>SCROLL TO EXPLORE <b>↓</b></span>
+    <span>DESIGNED AROUND POSSIBILITY</span>
+    <span>01 — 05</span>
+  </div>
+  <div class="hero-side-note">A THOUGHTFUL PLACE TO BEGIN</div>
 </section>
+
+<section class="intro section" id="vision">
+  <div class="section-index">01 <span>—</span> THE VISION</div>
+  <div class="intro-title">
+    <p class="eyebrow dark">A FOUNDATION FOR WHAT'S NEXT</p>
+    <h2>Every great story<br>begins with <em>a place.</em></h2>
+  </div>
+  <div class="intro-copy">
+    <p>At Parnika Foundations, we believe the right place can make all the difference. Discover property possibilities in and around Tadepalligudem, and find the space that fits the future you imagine.</p>
+    <a class="line-link" href="#contact">Let's find your place <b>↗</b></a>
+  </div>
+</section>
+
+<section class="metrics">
+  <div class="metric">
+    <strong>200<span>m</span></strong>
+    <small>FROM NIT ANDHRA PRADESH*</small>
+  </div>
+  <div class="metric">
+    <strong>400<span>m</span></strong>
+    <small>FROM NH16*</small>
+  </div>
+  <div class="metric">
+    <strong>01<span>km</span></strong>
+    <small>FROM TADEPALLIGUDEM TOWN*</small>
+  </div>
+  <p>*Indicative distances supplied by the project team. Confirm exact route measurements before publication.</p>
+</section>
+
+<section class="properties section" id="properties">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow dark">02 — FIND YOUR FIT</p>
+      <h2>Space for every<br><em>kind of tomorrow.</em></h2>
+    </div>
+    <p>Start with the kind of space that feels right. Explore the possibilities and ask our team for verified layouts, dimensions and availability.</p>
+  </div>
+
+  <div class="property-toolbar">
+    <span>EXPLORE PROPERTY TYPES</span>
+    <div class="filter-list">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="plot">Open plots</button>
+      <button class="filter" data-filter="duplex">Duplex homes</button>
+      <button class="filter" data-filter="simplex">Simplex homes</button>
+    </div>
+  </div>
+
+  <div class="property-grid">
+    <article class="property-card" data-type="plot">
+      <button class="property-visual visual-land details-btn" data-id="plot" aria-label="Explore open plots">
+        <span class="visual-number">01 / LAND</span>
+        <div class="land-model">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <span class="visual-bottom">ROOM TO IMAGINE <b>↗</b></span>
+      </button>
+      <div class="property-meta">
+        <div><small>OPEN PLOTS</small><h3>Make space<br>for your plans.</h3></div>
+        <button class="round-arrow details-btn" data-id="plot" aria-label="Open plot details">↗</button>
+      </div>
+      <p>A canvas for the home and future you have in mind.</p>
+    </article>
+
+    <article class="property-card" data-type="duplex">
+      <button class="property-visual visual-duplex details-btn" data-id="duplex" aria-label="Explore duplex homes">
+        <span class="visual-number">02 / TWO LEVELS</span>
+        <div class="house-model duplex-model"><i></i><b></b></div>
+        <span class="visual-bottom">LIFE WITH MORE ROOM <b>↗</b></span>
+      </button>
+      <div class="property-meta">
+        <div><small>DUPLEX HOMES</small><h3>More room<br>to grow together.</h3></div>
+        <button class="round-arrow details-btn" data-id="duplex" aria-label="Duplex home details">↗</button>
+      </div>
+      <p>Explore multi-level home possibilities for everyday living.</p>
+    </article>
+
+    <article class="property-card" data-type="simplex">
+      <button class="property-visual visual-simplex details-btn" data-id="simplex" aria-label="Explore simplex homes">
+        <span class="visual-number">03 / ONE LEVEL</span>
+        <div class="house-model simplex-model"><i></i><b></b></div>
+        <span class="visual-bottom">EASY EVERYDAY LIVING <b>↗</b></span>
+      </button>
+      <div class="property-meta">
+        <div><small>SIMPLEX HOMES</small><h3>All you need.<br>On one level.</h3></div>
+        <button class="round-arrow details-btn" data-id="simplex" aria-label="Simplex home details">↗</button>
+      </div>
+      <p>Discover single-level home possibilities that flow naturally.</p>
+    </article>
+  </div>
+  <p class="disclaimer">Property dimensions, pricing, approvals and availability are shared on enquiry and must be confirmed by Parnika Foundations.</p>
+</section>
+
+<section class="interlude">
+  <div class="interlude-image"></div>
+  <div class="interlude-shade"></div>
+  <div class="interlude-copy">
+    <p class="eyebrow">A PLACE WITH POTENTIAL</p>
+    <h2>Your next chapter<br>deserves <em>room to grow.</em></h2>
+    <p>Come see the neighbourhood, understand the possibilities, and make your next move with clarity.</p>
+    <a class="button button-outline" href="#contact">Arrange a conversation <b>↗</b></a>
+  </div>
+  <span class="interlude-index">PARNIKA / A NEW BEGINNING</span>
+</section>
+
+<section class="location section" id="location">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow dark">03 — THE NEIGHBOURHOOD</p>
+      <h2>Connected to<br><em>what matters.</em></h2>
+    </div>
+    <p>A location becomes meaningful through the places that shape everyday life. Explore the project area and plan your visit.</p>
+  </div>
+
+  <div class="location-grid">
+    <div class="map-panel">
+      <iframe title="Parnika Foundations project area" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=RGHJ%2BPF4%2C%20Tadepalligudem%2C%20Andhra%20Pradesh&output=embed"></iframe>
+      <a href="https://www.google.com/maps/search/?api=1&query=RGHJ%2BPF4%2C+Tadepalligudem%2C+Andhra+Pradesh" target="_blank" rel="noopener">OPEN MAP ↗</a>
+    </div>
+
+    <div class="location-details">
+      <small class="overline">PROJECT AREA</small>
+      <h3>Tadepalligudem,<br>Andhra Pradesh.</h3>
+      <p>Use the map to navigate to the project area. Please coordinate with the team to confirm the exact meeting point before visiting.</p>
+      <div class="nearby-list">
+        <div><b>01</b><span>NIT Andhra Pradesh<small>Approx. 200 metres*</small></span></div>
+        <div><b>02</b><span>National Highway 16<small>Approx. 400 metres*</small></span></div>
+        <div><b>03</b><span>Tadepalligudem town<small>Approx. 1 kilometre*</small></span></div>
+      </div>
+      <a class="line-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=RGHJ%2BPF4%2C+Tadepalligudem%2C+Andhra+Pradesh">Get directions <b>↗</b></a>
+    </div>
+  </div>
+  <p class="disclaimer">*Connectivity distances are indicative and supplied by the project team. Verify exact site pin and road distances before relying on them.</p>
+</section>
+
 <section class="gallery section" id="gallery">
-  <div class="section-head"><div><p class="eyebrow">04 — A CLOSER LOOK</p><h2>Picture the <em>possibilities.</em></h2></div><p>Every project has its own character. This space will bring the actual site, homes and surroundings into focus.</p></div>
-  <div class="gallery-placeholder"><span>PF</span><b>PROJECT PHOTOGRAPHS COMING SOON</b><small>Client-approved site images and architectural visuals will be featured here.</small></div>
+  <div class="section-heading">
+    <div><p class="eyebrow dark">04 — THE REAL PLACE</p><h2>See it for <em>yourself.</em></h2></div>
+    <p>Authentic project photography belongs here. We will add approved site images, layouts and architectural visuals once supplied by the client.</p>
+  </div>
+  <div class="gallery-wait">
+    <div class="gallery-monogram">PF</div>
+    <span>THE PARNIKA JOURNAL</span>
+    <strong>Real places. Real possibilities.</strong>
+    <small>CLIENT-APPROVED PROJECT PHOTOGRAPHS WILL APPEAR HERE</small>
+  </div>
 </section>
+
 <section class="contact section" id="contact">
-  <div class="contact-intro"><p class="eyebrow light">05 — TAKE THE FIRST STEP</p><h2>Let’s find a place<br>for <em>what comes next.</em></h2><p>Tell us what you are looking for. Our team can help with property details and a site visit.</p><div class="contact-sign"><b>✳</b><span>PERSONAL ENQUIRIES<small>We look forward to speaking with you.</small></span></div></div>
+  <div class="contact-copy">
+    <p class="eyebrow">05 — THE FIRST STEP</p>
+    <h2>Let's make room<br>for <em>what's next.</em></h2>
+    <p>Tell us what you are looking for. Our team can help with property details and arranging a site visit.</p>
+    <div class="contact-note">
+      <span>✳</span>
+      <div>PERSONAL ENQUIRIES<small>We look forward to speaking with you.</small></div>
+    </div>
+  </div>
+
   <form class="enquiry-form" id="enquiry-form">
-    <div class="form-title">START A CONVERSATION <b>✳</b></div>
+    <div class="form-heading">START A CONVERSATION <span>✳</span></div>
     <label>Your name<input name="name" autocomplete="name" placeholder="Enter your name" required></label>
     <label>Mobile number<input name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="[0-9+()\\s-]{8,18}" placeholder="Enter your mobile number" required></label>
-    <label>I’m interested in<select name="interest" required><option value="" disabled selected>Select a property type</option><option>Open plots</option><option>Duplex homes</option><option>Simplex homes</option><option>Need help deciding</option></select></label>
-    <label>How can we help? <small>(OPTIONAL)</small><textarea name="message" rows="3" placeholder="Tell us a little about what you have in mind"></textarea></label>
-    <label class="consent"><input type="checkbox" name="consent" required><span>I agree to be contacted by Parnika Foundations regarding this enquiry.</span></label>
-    <button class="btn btn-gold" type="submit">Send enquiry on WhatsApp <b>↗</b></button><p class="form-note">WhatsApp will open with your enquiry ready to review and send.</p><p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    <label>I'm interested in
+      <select name="interest" required>
+        <option value="" disabled selected>Select a property type</option>
+        <option>Open plots</option>
+        <option>Duplex homes</option>
+        <option>Simplex homes</option>
+        <option>Need help deciding</option>
+      </select>
+    </label>
+    <label>Tell us more <small>OPTIONAL</small><textarea name="message" rows="3" placeholder="What would you like to know?"></textarea></label>
+    <label class="consent"><input type="checkbox" name="consent" required><span>I agree to be contacted about this enquiry.</span></label>
+    <button class="button button-gold" type="submit">Continue to WhatsApp <b>↗</b></button>
+    <p class="form-help">WhatsApp opens with your enquiry ready for you to review and send.</p>
+    <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
   </form>
 </section>
 </main>
-<footer class="footer"><a class="brand" href="#home"><span class="brand-icon">P<span>F</span></span><span class="brand-word">PARNIKA<small>FOUNDATIONS</small></span></a><p>Where your future takes shape.</p><a href="#home" class="to-top">BACK TO TOP ↑</a><small>© <span id="year"></span> Parnika Foundations. All rights reserved.</small><small class="credit">Website experience by AETERNA WEBSITES</small></footer>
-<div class="modal" id="property-modal" aria-hidden="true"><div class="modal-backdrop" data-close></div><div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" data-close aria-label="Close details">×</button><small class="label" id="modal-label">PROPERTY DETAILS</small><h2 id="modal-title">Explore properties</h2><p id="modal-description"></p><p class="modal-note">Specific dimensions, pricing, approvals and current availability will be confirmed directly by Parnika Foundations.</p><a href="#contact" class="btn btn-dark" id="modal-enquire">Enquire about this property <b>↗</b></a></div></div>
-<script src="main.js" defer></script>
-</body></html>
+
+<footer class="footer">
+  <a class="brand brand-footer" href="#home"><span class="brand-symbol">P<span>F</span></span><span class="brand-name">PARNIKA<small>FOUNDATIONS</small></span></a>
+  <p>A place to become.</p>
+  <a href="#home">BACK TO TOP ↑</a>
+  <small>© <span id="year"></span> Parnika Foundations. All rights reserved.</small>
+  <small class="agency-credit">DIGITAL EXPERIENCE BY AETERNA WEBSITES</small>
+</footer>
+
+<div class="property-modal" id="property-modal" aria-hidden="true">
+  <button class="modal-backdrop" data-close aria-label="Close details"></button>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-x" data-close aria-label="Close">×</button>
+    <small id="modal-label">PROPERTY DETAILS</small>
+    <h2 id="modal-title">Explore the possibilities.</h2>
+    <p id="modal-description"></p>
+    <div class="modal-caveat">Specific dimensions, pricing, approvals and current availability must be confirmed directly by Parnika Foundations.</div>
+    <a class="button button-dark" href="#contact" id="modal-enquire">Ask us about this <b>↗</b></a>
+  </div>
+</div>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
