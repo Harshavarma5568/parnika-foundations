@@ -271,44 +271,21 @@ $('#enquiry-form').addEventListener('submit', event => {
 
 });
 
-// ======================================
-// 7. THREE.JS ARCHITECTURAL EXPERIENCE
-// ======================================
+
+/* =========================================
+   7. PARNIKA — BLOCK BY BLOCK HOUSE BUILD
+========================================= */
 
 const canvas = $('#architecture-scene');
 
 if (canvas) {
-
   try {
-
-    // SCENE
-
     const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#073B3A');
+    scene.fog = new THREE.Fog('#073B3A', 17, 32);
 
-    scene.background = new THREE.Color('#17251d');
-
-    scene.fog = new THREE.Fog(
-      '#17251d',
-      13,
-      28
-    );
-
-    // CAMERA
-
-    const camera = new THREE.PerspectiveCamera(
-      34,
-      1,
-      0.1,
-      100
-    );
-
-    camera.position.set(
-      8.8,
-      6.4,
-      10.5
-    );
-
-    // RENDERER
+    const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
+    camera.position.set(8, 6, 10);
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
@@ -316,600 +293,414 @@ if (canvas) {
       alpha: false
     });
 
-    renderer.setPixelRatio(
-      Math.min(window.devicePixelRatio || 1, 1.7)
-    );
-
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.7));
     renderer.shadowMap.enabled = true;
-
-    renderer.shadowMap.type =
-      THREE.PCFSoftShadowMap;
-
-    renderer.outputColorSpace =
-      THREE.SRGBColorSpace;
-
-    renderer.toneMapping =
-      THREE.ACESFilmicToneMapping;
-
-    renderer.toneMappingExposure = 1.15;
-
-    // WORLD
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
 
     const world = new THREE.Group();
-
     scene.add(world);
 
-    // MATERIALS
+    /* LIGHTING */
 
-    const material = (
-      color,
-      roughness = 0.72,
-      metalness = 0
-    ) => {
+    scene.add(new THREE.HemisphereLight('#fff4df', '#314b40', 2.2));
 
-      return new THREE.MeshStandardMaterial({
-        color,
-        roughness,
-        metalness
-      });
-
-    };
-
-    const stone = material('#d6d0bf');
-
-    const pale = material('#eee8d9');
-
-    const dark = material('#46584a');
-
-    const glass = new THREE.MeshPhysicalMaterial({
-      color: '#78958a',
-      roughness: 0.18,
-      metalness: 0.15,
-      transparent: true,
-      opacity: 0.72
-    });
-
-    const bronze = material(
-      '#b79a69',
-      0.35,
-      0.6
-    );
-
-    const groundMaterial = material('#536b56');
-
-    // ==================================
-    // LIGHTING
-    // ==================================
-
-    const ambient = new THREE.HemisphereLight(
-      '#e8e2cf',
-      '#334638',
-      2.1
-    );
-
-    scene.add(ambient);
-
-    const sun = new THREE.DirectionalLight(
-      '#ffe5bd',
-      3.2
-    );
-
-    sun.position.set(-5, 10, 7);
-
+    const sun = new THREE.DirectionalLight('#ffe4bd', 3.3);
+    sun.position.set(-6, 10, 7);
     sun.castShadow = true;
-
     sun.shadow.mapSize.set(1024, 1024);
-
     scene.add(sun);
 
-    const fill = new THREE.PointLight(
-      '#c2d6c4',
-      1.3,
-      22
-    );
-
-    fill.position.set(6, 4, -4);
-
+    const fill = new THREE.PointLight('#a6e3d0', 1.5, 24);
+    fill.position.set(5, 5, -4);
     scene.add(fill);
 
-    // ==================================
-    // LAND
-    // ==================================
+    /* MATERIALS */
+
+    const concrete = new THREE.MeshStandardMaterial({
+      color: '#c9c8b9',
+      roughness: 0.85
+    });
+
+    const lightConcrete = new THREE.MeshStandardMaterial({
+      color: '#e7e2d3',
+      roughness: 0.8
+    });
+
+    const brick = new THREE.MeshStandardMaterial({
+      color: '#b96b43',
+      roughness: 0.9
+    });
+
+    const dark = new THREE.MeshStandardMaterial({
+      color: '#244b43',
+      roughness: 0.65
+    });
+
+    const wood = new THREE.MeshStandardMaterial({
+      color: '#936447',
+      roughness: 0.7
+    });
+
+    const glass = new THREE.MeshPhysicalMaterial({
+      color: '#8fc5bb',
+      roughness: 0.15,
+      metalness: 0.1,
+      transparent: true,
+      opacity: 0.78
+    });
+
+    const gold = new THREE.MeshStandardMaterial({
+      color: '#d4a45f',
+      metalness: 0.55,
+      roughness: 0.35
+    });
+
+    const green = new THREE.MeshStandardMaterial({
+      color: '#39785a',
+      roughness: 0.9
+    });
+
+    /* GROUND */
 
     const ground = new THREE.Mesh(
       new THREE.PlaneGeometry(35, 35),
-      groundMaterial
+      new THREE.MeshStandardMaterial({
+        color: '#173d35',
+        roughness: 1
+      })
     );
 
     ground.rotation.x = -Math.PI / 2;
-
-    ground.position.y = -0.04;
-
+    ground.position.y = -0.15;
     ground.receiveShadow = true;
-
     world.add(ground);
 
-    // ==================================
-    // ARCHITECTURAL FOUNDATION
-    // ==================================
+    const grid = new THREE.GridHelper(30, 30, '#658b78', '#365d4d');
+    grid.position.y = -0.13;
+    grid.material.transparent = true;
+    grid.material.opacity = 0.16;
+    world.add(grid);
 
-    const base = new THREE.Mesh(
-      new THREE.BoxGeometry(8.2, 0.34, 6.6),
-      material('#9b9b83')
-    );
+    /* ANIMATION BLOCK SYSTEM */
 
-    base.position.y = 0.12;
+    const animatedBlocks = [];
+    let sequence = 0;
 
-    base.receiveShadow = true;
+    function addBlock(x, y, z, width, height, depth, material, delay = null) {
+      const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(width, height, depth),
+        material
+      );
 
-    base.castShadow = true;
+      const target = new THREE.Vector3(x, y, z);
 
-    world.add(base);
+      const start = new THREE.Vector3(
+        x + Math.sin(sequence * 2.3) * 3.2,
+        y + 3.5 + (sequence % 4) * 0.45,
+        z + Math.cos(sequence * 1.7) * 3
+      );
 
-    // MAIN BUILDING
+      mesh.position.copy(start);
+      mesh.scale.setScalar(0.88);
+      mesh.castShadow = true;
+      mesh.receiveShadow = true;
 
-    const body = new THREE.Mesh(
-      new THREE.BoxGeometry(4.8, 2.8, 3.7),
-      stone
-    );
+      mesh.userData.target = target;
+      mesh.userData.start = start.clone();
+      mesh.userData.delay = delay ?? sequence * 0.085;
 
-    body.position.set(0, 1.68, 0);
+      animatedBlocks.push(mesh);
+      world.add(mesh);
 
-    body.castShadow = true;
+      sequence++;
+      return mesh;
+    }
 
-    body.receiveShadow = true;
+    /* STAGE 1 — FOUNDATION */
 
-    world.add(body);
+    for (let x = -2.4; x <= 2.41; x += 0.8) {
+      for (let z = -1.8; z <= 1.81; z += 0.9) {
+        addBlock(
+          x, 0.12, z,
+          0.78, 0.24, 0.87,
+          concrete
+        );
+      }
+    }
 
-    // UPPER FLOOR
+    /* STAGE 2 — WALL BLOCKS */
 
-    const upper = new THREE.Mesh(
-      new THREE.BoxGeometry(4.15, 1.25, 3.35),
-      pale
-    );
+    const blockWidth = 0.76;
+    const blockHeight = 0.43;
+    const frontZ = 1.95;
 
-    upper.position.set(0.28, 3.62, -0.08);
+    // Front wall, with space for the entrance.
+    for (let row = 0; row < 6; row++) {
+      for (let col = -3; col <= 3; col++) {
+        const x = col * 0.8;
 
-    upper.castShadow = true;
+        // Leave a central doorway opening.
+        if (Math.abs(x) < 0.55 && row < 4) continue;
 
-    world.add(upper);
+        // Leave two window openings.
+        const leftWindow = x < -0.7 && x > -1.7 && row >= 2 && row <= 3;
+        const rightWindow = x > 0.7 && x < 1.7 && row >= 2 && row <= 3;
 
-    // ROOF
+        if (leftWindow || rightWindow) continue;
 
-    const roof = new THREE.Mesh(
-      new THREE.BoxGeometry(4.55, 0.16, 3.72),
-      dark
-    );
+        addBlock(
+          x,
+          0.35 + row * 0.44,
+          frontZ,
+          blockWidth,
+          blockHeight,
+          0.24,
+          row % 2 === 0 ? brick : concrete
+        );
+      }
+    }
 
-    roof.position.set(0.28, 4.34, -0.08);
+    // Left and right side walls.
+    for (let side of [-1, 1]) {
+      for (let row = 0; row < 6; row++) {
+        for (let z = -1.5; z <= 1.51; z += 0.8) {
+          addBlock(
+            side * 2.45,
+            0.35 + row * 0.44,
+            z,
+            0.24,
+            blockHeight,
+            0.76,
+            concrete
+          );
+        }
+      }
+    }
 
-    roof.castShadow = true;
+    // Back wall.
+    for (let row = 0; row < 6; row++) {
+      for (let col = -3; col <= 3; col++) {
+        addBlock(
+          col * 0.8,
+          0.35 + row * 0.44,
+          -1.95,
+          blockWidth,
+          blockHeight,
+          0.24,
+          concrete
+        );
+      }
+    }
 
-    world.add(roof);
+    /* STAGE 3 — STRUCTURAL PILLARS */
 
-    // PROJECTING CANOPY
+    for (const x of [-2.35, 2.35]) {
+      addBlock(x, 1.65, 1.95, 0.25, 3.1, 0.3, lightConcrete);
+    }
 
-    const canopy = new THREE.Mesh(
-      new THREE.BoxGeometry(5.7, 0.16, 1.15),
-      bronze
-    );
+    // Door lintel and window supports.
+    addBlock(0, 2.16, 1.95, 1.4, 0.28, 0.3, lightConcrete);
 
-    canopy.position.set(0, 2.95, 2.05);
+    for (const x of [-1.25, 1.25]) {
+      addBlock(x, 2.3, 1.95, 0.12, 1.05, 0.3, lightConcrete);
+    }
 
-    canopy.castShadow = true;
+    /* STAGE 4 — ROOF */
 
-    world.add(canopy);
+    addBlock(0, 3.12, 0, 5.35, 0.32, 4.5, dark);
+    addBlock(0, 3.32, 0, 5.05, 0.12, 4.2, lightConcrete);
 
-    // ==================================
-    // GLASS WINDOWS
-    // ==================================
+    // Front architectural fascia.
+    addBlock(0, 3.1, 2.18, 5.45, 0.18, 0.18, gold);
 
-    for (
-      let x = -1.65;
-      x <= 1.66;
-      x += 1.1
-    ) {
+    /* STAGE 5 — WINDOWS AND FINISHES */
 
-      const windowGlass = new THREE.Mesh(
-        new THREE.BoxGeometry(0.78, 1.48, 0.07),
+    // Window glass.
+    for (const x of [-1.25, 1.25]) {
+      const windowMesh = new THREE.Mesh(
+        new THREE.BoxGeometry(0.82, 0.92, 0.08),
         glass
       );
 
-      windowGlass.position.set(
-        x,
-        3.55,
-        1.61
+      windowMesh.position.set(x, 1.9, 2.09);
+      windowMesh.castShadow = true;
+      windowMesh.userData.target = windowMesh.position.clone();
+      windowMesh.userData.start = windowMesh.position.clone().add(
+        new THREE.Vector3(0, 3, 0)
       );
+      windowMesh.userData.delay = sequence * 0.085;
+      windowMesh.position.copy(windowMesh.userData.start);
 
-      world.add(windowGlass);
-
-      const frame = new THREE.Mesh(
-        new THREE.BoxGeometry(0.055, 1.55, 0.09),
-        bronze
-      );
-
-      frame.position.set(
-        x - 0.42,
-        3.55,
-        1.66
-      );
-
-      world.add(frame);
-
+      animatedBlocks.push(windowMesh);
+      world.add(windowMesh);
+      sequence++;
     }
 
-    // MAIN ENTRANCE
-
-    const entry = new THREE.Mesh(
-      new THREE.BoxGeometry(0.92, 2.15, 0.12),
-      dark
+    // Main entrance door.
+    const door = new THREE.Mesh(
+      new THREE.BoxGeometry(0.92, 2.05, 0.12),
+      wood
     );
 
-    entry.position.set(0.15, 1.32, 1.91);
+    door.userData.target = new THREE.Vector3(0, 1.2, 2.08);
+    door.userData.start = new THREE.Vector3(0, 4.5, 2.08);
+    door.userData.delay = sequence * 0.085;
+    door.position.copy(door.userData.start);
+    door.castShadow = true;
+    animatedBlocks.push(door);
+    world.add(door);
+    sequence++;
 
-    world.add(entry);
+    // Balcony.
+    addBlock(0.5, 2.55, 2.5, 2.5, 0.12, 1.05, gold);
 
-    const entryGlass = new THREE.Mesh(
-      new THREE.BoxGeometry(0.66, 1.82, 0.04),
-      glass
-    );
+    // Balcony rail.
+    addBlock(0.5, 2.9, 3, 2.5, 0.07, 0.07, lightConcrete);
 
-    entryGlass.position.set(0.15, 1.35, 1.99);
+    /* STAGE 6 — STEPS AND LANDSCAPING */
 
-    world.add(entryGlass);
-
-    // SIDE WING
-
-    const wing = new THREE.Mesh(
-      new THREE.BoxGeometry(1.45, 1.9, 2.5),
-      pale
-    );
-
-    wing.position.set(2.5, 1.22, -0.25);
-
-    wing.castShadow = true;
-
-    world.add(wing);
-
-    // BALCONY
-
-    const balcony = new THREE.Mesh(
-      new THREE.BoxGeometry(2.15, 0.12, 1.05),
-      bronze
-    );
-
-    balcony.position.set(0.25, 2.85, 2.48);
-
-    world.add(balcony);
-
-    for (let i = 0; i < 7; i++) {
-
-      const rail = new THREE.Mesh(
-        new THREE.BoxGeometry(0.035, 0.62, 0.035),
-        pale
+    for (let i = 0; i < 3; i++) {
+      addBlock(
+        0,
+        0.22 - i * 0.055,
+        2.6 + i * 0.38,
+        1.65 - i * 0.18,
+        0.12,
+        0.38,
+        lightConcrete
       );
-
-      rail.position.set(
-        -0.7 + i * 0.32,
-        3.2,
-        2.9
-      );
-
-      world.add(rail);
-
     }
 
-    // ENTRANCE STEPS
-
-    const steps = new THREE.Mesh(
-      new THREE.BoxGeometry(2.1, 0.12, 0.65),
-      pale
-    );
-
-    steps.position.set(0.1, 0.42, 3.05);
-
-    world.add(steps);
-
-    // WALKWAY
-
-    const path = new THREE.Mesh(
-      new THREE.BoxGeometry(1.3, 0.035, 4.4),
-      material('#b9b49e')
-    );
-
-    path.position.set(0.15, 0.31, 5.1);
-
-    world.add(path);
-
-    // ==================================
-    // LANDSCAPING
-    // ==================================
-
-    function createTree(x, z, height = 2.2) {
-
+    function createTree(x, z, delay) {
       const trunk = new THREE.Mesh(
-        new THREE.CylinderGeometry(
-          0.07,
-          0.11,
-          height * 0.48,
-          7
-        ),
-        material('#675743')
+        new THREE.CylinderGeometry(0.07, 0.1, 1.1, 8),
+        wood
       );
 
-      trunk.position.set(
-        x,
-        height * 0.24,
-        z
-      );
-
-      trunk.castShadow = true;
-
+      trunk.userData.target = new THREE.Vector3(x, 0.55, z);
+      trunk.userData.start = new THREE.Vector3(x, 3.5, z);
+      trunk.userData.delay = delay;
+      trunk.position.copy(trunk.userData.start);
+      animatedBlocks.push(trunk);
       world.add(trunk);
 
       const crown = new THREE.Mesh(
-        new THREE.IcosahedronGeometry(
-          height * 0.31,
-          1
-        ),
-        material('#6d866b')
+        new THREE.IcosahedronGeometry(0.65, 1),
+        green
       );
 
-      crown.position.set(
-        x,
-        height * 0.62,
-        z
-      );
-
+      crown.userData.target = new THREE.Vector3(x, 1.45, z);
+      crown.userData.start = new THREE.Vector3(x, 4.5, z);
+      crown.userData.delay = delay + 0.12;
+      crown.position.copy(crown.userData.start);
       crown.castShadow = true;
-
+      animatedBlocks.push(crown);
       world.add(crown);
-
-      const crown2 = new THREE.Mesh(
-        new THREE.IcosahedronGeometry(
-          height * 0.22,
-          1
-        ),
-        material('#87987a')
-      );
-
-      crown2.position.set(
-        x + 0.16,
-        height * 0.78,
-        z + 0.04
-      );
-
-      world.add(crown2);
-
     }
 
-    createTree(-3.5, 1.9, 2.5);
+    createTree(-3.5, 1.3, sequence * 0.085);
+    createTree(3.5, 1.3, sequence * 0.085 + 0.2);
+    createTree(-3.5, -2.2, sequence * 0.085 + 0.4);
 
-    createTree(3.8, 1.3, 2.8);
+    /* CAMERA AND INTERACTION */
 
-    createTree(-3.2, -2.5, 2.1);
+    let targetRotation = 0;
+    let currentRotation = 0;
+    let dragging = false;
+    let lastPointerX = 0;
 
-    createTree(3.8, -2.7, 2.4);
-
-    // ==================================
-    // GARDEN WALLS
-    // ==================================
-
-    const wallMaterial = material('#b5b39f');
-
-    const wallPositions = [
-      [-3.4, 0, 0.12, 5.7],
-      [3.7, -0.5, 0.12, 4.6],
-      [-0.2, -3.15, 7, 0.12]
-    ];
-
-    wallPositions.forEach(position => {
-
-      const wall = new THREE.Mesh(
-        new THREE.BoxGeometry(
-          position[2],
-          0.42,
-          position[3]
-        ),
-        wallMaterial
-      );
-
-      wall.position.set(
-        position[0],
-        0.2,
-        position[1]
-      );
-
-      world.add(wall);
-
+    canvas.addEventListener('pointerdown', event => {
+      dragging = true;
+      lastPointerX = event.clientX;
+      canvas.setPointerCapture(event.pointerId);
     });
 
-    // ==================================
-    // SITE GRID
-    // ==================================
+    canvas.addEventListener('pointermove', event => {
+      if (!dragging) return;
 
-    const grid = new THREE.GridHelper(
-      30,
-      30,
-      '#87927c',
-      '#637365'
-    );
-
-    grid.position.y = -0.025;
-
-    grid.material.transparent = true;
-
-    grid.material.opacity = 0.18;
-
-    world.add(grid);
-
-    // ==================================
-    // INTERACTIVE CAMERA
-    // ==================================
-
-    let targetX = 0;
-
-    let targetY = 0;
-
-    let dragging = false;
-
-    let lastX = 0;
-
-    let lastY = 0;
-
-    let autoRotate = true;
-
-    canvas.addEventListener(
-      'pointerdown',
-      event => {
-
-        dragging = true;
-
-        autoRotate = false;
-
-        lastX = event.clientX;
-
-        lastY = event.clientY;
-
-        canvas.setPointerCapture(event.pointerId);
-
-      }
-    );
-
-    canvas.addEventListener(
-      'pointermove',
-      event => {
-
-        if (!dragging) return;
-
-        targetY +=
-          (event.clientX - lastX) * 0.006;
-
-        targetX +=
-          (event.clientY - lastY) * 0.003;
-
-        targetX = THREE.MathUtils.clamp(
-          targetX,
-          -0.22,
-          0.28
-        );
-
-        lastX = event.clientX;
-
-        lastY = event.clientY;
-
-      }
-    );
+      targetRotation += (event.clientX - lastPointerX) * 0.006;
+      lastPointerX = event.clientX;
+    });
 
     const stopDragging = () => {
       dragging = false;
     };
 
-    canvas.addEventListener(
-      'pointerup',
-      stopDragging
-    );
+    canvas.addEventListener('pointerup', stopDragging);
+    canvas.addEventListener('pointercancel', stopDragging);
 
-    canvas.addEventListener(
-      'pointercancel',
-      stopDragging
-    );
+    canvas.addEventListener('dblclick', () => {
+      targetRotation = 0;
+    });
 
-    // ==================================
-    // RESPONSIVE RENDERING
-    // ==================================
+    /* RESPONSIVE RESIZE */
 
-    const resize = () => {
-
+    function resizeScene() {
       const width = canvas.clientWidth;
-
       const height = canvas.clientHeight;
 
       if (!width || !height) return;
 
-      renderer.setSize(
-        width,
-        height,
-        false
-      );
-
+      renderer.setSize(width, height, false);
       camera.aspect = width / height;
-
       camera.updateProjectionMatrix();
+    }
 
-    };
-
-    const resizeObserver = new ResizeObserver(resize);
-
+    const resizeObserver = new ResizeObserver(resizeScene);
     resizeObserver.observe(canvas);
+    resizeScene();
 
-    resize();
+    /* BUILD ANIMATION */
 
-    // ==================================
-    // ANIMATION LOOP
-    // ==================================
-
+    const clock = new THREE.Clock();
     const reducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
 
-    const clock = new THREE.Clock();
+    const buildDuration = 8.5;
+
+    function easeOut(value) {
+      return 1 - Math.pow(1 - value, 3);
+    }
 
     function animate() {
-
       requestAnimationFrame(animate);
 
-      const time = clock.getElapsedTime();
+      const elapsed = clock.getElapsedTime();
 
-      if (autoRotate && !reducedMotion) {
+      animatedBlocks.forEach(mesh => {
+        const localTime = reducedMotion
+          ? 1
+          : (elapsed - mesh.userData.delay) / buildDuration * 2.2;
 
-        targetY = Math.sin(time * 0.16) * 0.16;
+        const progress = THREE.MathUtils.clamp(localTime, 0, 1);
+        const eased = easeOut(progress);
 
-      }
+        mesh.position.lerpVectors(
+          mesh.userData.start,
+          mesh.userData.target,
+          eased
+        );
 
-      world.rotation.y +=
-        (targetY - world.rotation.y) * 0.035;
+        const scale = 0.88 + 0.12 * eased;
+        mesh.scale.setScalar(scale);
+      });
 
-      world.rotation.x +=
-        (targetX - world.rotation.x) * 0.035;
+      // Smooth interactive camera rotation.
+      currentRotation += (targetRotation - currentRotation) * 0.045;
+      world.rotation.y = currentRotation + Math.sin(elapsed * 0.18) * 0.035;
 
-      const pulse =
-        1 + Math.sin(time * 0.7) * 0.008;
-
-      world.scale.setScalar(pulse);
-
-      camera.lookAt(0, 1.65, 0);
-
+      camera.lookAt(0, 1.55, 0);
       renderer.render(scene, camera);
-
     }
 
     animate();
 
-    // DOUBLE CLICK TO RESET AUTO MOVEMENT
-
-    canvas.addEventListener(
-      'dblclick',
-      () => {
-
-        autoRotate = true;
-
-        targetX = 0;
-
-      }
-    );
-
   } catch (error) {
-
-    console.warn(
-      '3D scene could not initialise:',
-      error
-    );
-
-    canvas.style.background =
-      'linear-gradient(135deg,#344b3c,#101b17)';
-
+    console.error('Parnika 3D construction animation error:', error);
+    canvas.style.background = 'linear-gradient(135deg,#245c4b,#073B3A)';
   }
-
 }
- 
